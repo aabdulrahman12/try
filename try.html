@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote Camera Access</title>
+</head>
+<body>
+    <h1>Click the button to access your camera</h1>
+    <button onclick="initCamera()">Grant Camera Access</button>
+
+    <script>
+        async function initCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+
+                // Display the camera stream (you can modify this based on your project)
+                const videoElement = document.createElement('video');
+                videoElement.srcObject = stream;
+                document.body.appendChild(videoElement);
+            } catch (error) {
+                console.error('Error accessing camera:', error);
+            }
+        }
+    </script>
+</body>
+</html>
